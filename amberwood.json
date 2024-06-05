@@ -1,0 +1,445 @@
+{
+  "$schema": "https://zed.dev/schema/themes/v0.1.0.json",
+  "name": "Amberwood",
+  "author": "Utkarsh Thanvi (utshaan)",
+  "themes": [
+    {
+      "name": "Amberwood",
+      "appearance": "dark",
+      "style": {
+        "punctuation.delimiter": "gray06",
+        "keyword": "keyword",
+        "markup.bold": {
+          "modifiers": [
+            "bold"
+          ]
+        },
+        "ui.menu.selected": {
+          "bg": "gray03",
+          "fg": "bright_white"
+        },
+        "markup.heading": {
+          "fg": "bright_blue",
+          "modifiers": [
+            "bold"
+          ]
+        },
+        "constant.builtin": "yellow",
+        "ui.cursorline.primary": {
+          "bg": "gray01"
+        },
+        "namespace": {
+          "fg": "namespace",
+          "modifiers": [
+            "italic"
+          ]
+        },
+        "variable": {
+          "fg": "fg"
+        },
+        "type.enum.variant": "magenta",
+        "markup.link.text": {
+          "fg": "blue",
+          "modifiers": [
+            "italic"
+          ]
+        },
+        "error": "error",
+        "attribute": {
+          "fg": "blue",
+          "modifiers": [
+            "italic"
+          ]
+        },
+        "ui.background": {
+          "bg": "bg"
+        },
+        "type.builtin": "magenta",
+        "constant": "constant",
+        "ui.text.focus": {
+          "fg": "fg"
+        },
+        "operator": "operator",
+        "ui.popup": {
+          "bg": "gray01"
+        },
+        "warning": "yellow",
+        "ui.cursor": {
+          "bg": "cursor",
+          "fg": "bg"
+        },
+        "markup.italic": {
+          "modifiers": [
+            "italic"
+          ]
+        },
+        "ui.statusline": {
+          "bg": "gray01",
+          "fg": "status_line_fg"
+        },
+        "variable.parameter": {
+          "fg": "white",
+          "modifiers": [
+            "italic"
+          ]
+        },
+        "diagnostic": {
+          "modifiers": [
+            "underlined"
+          ]
+        },
+        "punctuation": "gray06",
+        "constant.numeric": "numeric",
+        "ui.window": {
+          "fg": "gray02"
+        },
+        "keyword.control.conditional": {
+          "fg": "conditional",
+          "modifiers": [
+            "italic"
+          ]
+        },
+        "comment": {
+          "fg": "comment",
+          "modifiers": [
+            "italic"
+          ]
+        },
+        "markup.link.url": {
+          "fg": "green",
+          "modifiers": [
+            "underlined"
+          ]
+        },
+        "ui.linenr": {
+          "fg": "gray04"
+        },
+        "ui.statusline.normal": {
+          "bg": "cyan",
+          "fg": "bg",
+          "modifiers": [
+            "bold"
+          ]
+        },
+        "constant.character.escape": "cyan",
+        "special": "yellow",
+        "ui.selection.primary": {
+          "bg": "gray03"
+        },
+        "info": "bright_blue",
+        "constructor": "yellow",
+        "ui.cursor.match": {
+          "fg": "yellow",
+          "modifiers": [
+            "bold",
+            "underlined"
+          ]
+        },
+        "string": "string",
+        "label": "yellow",
+        "ui.text": {
+          "fg": "fg"
+        },
+        "ui.menu": {
+          "bg": "gray01",
+          "fg": "white"
+        },
+        "function.macro": "bright_cyan",
+        "tag": "tag",
+        "ui.highlight": {
+          "bg": "gray02"
+        },
+        "ui.virtual.wrap": "softwrap",
+        "function": {
+          "fg": "function",
+          "modifiers": [
+            "italic"
+          ]
+        },
+        "ui.background.separator": {
+          "fg": "fg"
+        },
+        "variable.other.member": "white",
+        "ui.virtual.inlay-hint": {
+          "fg": "gray03"
+        },
+        "hint": "bright_cyan",
+        "diff.plus": "bright_green",
+        "string.regexp": "green",
+        "type": "bright_blue",
+        "function.builtin": "support_function",
+        "string.special": "yellow",
+        "diff.delta": "bright_blue",
+        "keyword.directive": "magenta",
+        "markup.raw": "yellow",
+        "variable.builtin": "bright_blue",
+        "markup.heading.marker": {
+          "fg": "gray06"
+        },
+        "ui.statusline.select": {
+          "bg": "magenta",
+          "fg": "bg",
+          "modifiers": [
+            "bold"
+          ]
+        },
+        "markup.list": "gray06",
+        "ui.linenr.selected": {
+          "fg": "fg"
+        },
+        "ui.statusline.insert": {
+          "bg": "blue",
+          "fg": "bg",
+          "modifiers": [
+            "bold"
+          ]
+        },
+        "diff.minus": "red",
+        "ui.virtual": {
+          "fg": "gray02"
+        },
+        "ui.virtual.ruler": {
+          "bg": "gray02"
+        },
+        "ui.virtual.indent-guide": {
+          "fg": "gray02"
+        },
+        "ui.statusline.inactive": {
+          "bg": "gray01",
+          "fg": "fg",
+          "modifiers": [
+            "dim"
+          ]
+        },
+        "ui.selection": {
+          "bg": "gray03"
+        },
+        "ui.help": {
+          "bg": "gray01",
+          "fg": "white"
+        },
+        "ui.menu.scroll": {
+          "bg": "gray01",
+          "fg": "gray04"
+        },
+        "colors": {
+          "attribute": {
+            "fg": "#aca1cf",
+            "modifiers": [
+              "italic"
+            ]
+          },
+          "punctuation.delimiter": "gray06",
+          "keyword": "keyword",
+          "markup.bold": {
+            "modifiers": [
+              "bold"
+            ]
+          },
+          "ui.menu.selected": {
+            "bg": "gray03",
+            "fg": "bright_white"
+          },
+          "markup.heading": {
+            "fg": "bright_blue",
+            "modifiers": [
+              "bold"
+            ]
+          },
+          "constant.builtin": "yellow",
+          "ui.cursorline.primary": {
+            "bg": "gray01"
+          },
+          "namespace": {
+            "fg": "namespace",
+            "modifiers": [
+              "italic"
+            ]
+          },
+          "variable": {
+            "fg": "fg"
+          },
+          "type.enum.variant": "magenta",
+          "markup.link.text": {
+            "fg": "blue",
+            "modifiers": [
+              "italic"
+            ]
+          },
+          "error": "error",
+          "ui.background": {
+            "bg": "bg"
+          },
+          "type.builtin": "magenta",
+          "constant": "constant",
+          "ui.text.focus": {
+            "fg": "fg"
+          },
+          "operator": "operator",
+          "ui.popup": {
+            "bg": "gray01"
+          },
+          "warning": "yellow",
+          "ui.cursor": {
+            "bg": "cursor",
+            "fg": "bg"
+          },
+          "markup.italic": {
+            "modifiers": [
+              "italic"
+            ]
+          },
+          "ui.statusline": {
+            "bg": "gray01",
+            "fg": "status_line_fg"
+          },
+          "variable.parameter": {
+            "fg": "white",
+            "modifiers": [
+              "italic"
+            ]
+          },
+          "diagnostic": {
+            "modifiers": [
+              "underlined"
+            ]
+          },
+          "punctuation": "gray06",
+          "constant.numeric": "numeric",
+          "ui.window": {
+            "fg": "gray02"
+          },
+          "keyword.control.conditional": {
+            "fg": "conditional",
+            "modifiers": [
+              "italic"
+            ]
+          },
+          "comment": {
+            "fg": "comment",
+            "modifiers": [
+              "italic"
+            ]
+          },
+          "markup.link.url": {
+            "fg": "green",
+            "modifiers": [
+              "underlined"
+            ]
+          },
+          "ui.linenr": {
+            "fg": "gray04"
+          },
+          "ui.statusline.normal": {
+            "bg": "cyan",
+            "fg": "bg",
+            "modifiers": [
+              "bold"
+            ]
+          },
+          "constant.character.escape": "cyan",
+          "special": "yellow",
+          "ui.selection.primary": {
+            "bg": "gray03"
+          },
+          "info": "bright_blue",
+          "constructor": "yellow",
+          "ui.cursor.match": {
+            "fg": "yellow",
+            "modifiers": [
+              "bold",
+              "underlined"
+            ]
+          },
+          "string": "string",
+          "label": "yellow",
+          "ui.text": {
+            "fg": "fg"
+          },
+          "ui.menu": {
+            "bg": "gray01",
+            "fg": "white"
+          },
+          "function.macro": "bright_cyan",
+          "tag": "tag",
+          "ui.highlight": {
+            "bg": "gray02"
+          },
+          "ui.virtual.wrap": "softwrap",
+          "function": {
+            "fg": "function",
+            "modifiers": [
+              "italic"
+            ]
+          },
+          "ui.background.separator": {
+            "fg": "fg"
+          },
+          "variable.other.member": "white",
+          "ui.virtual.inlay-hint": {
+            "fg": "gray03"
+          },
+          "hint": "bright_cyan",
+          "diff.plus": "bright_green",
+          "string.regexp": "green",
+          "type": "bright_blue",
+          "function.builtin": "support_function",
+          "string.special": "yellow",
+          "diff.delta": "bright_blue",
+          "keyword.directive": "magenta",
+          "markup.raw": "yellow",
+          "variable.builtin": "bright_blue",
+          "markup.heading.marker": {
+            "fg": "gray06"
+          },
+          "ui.statusline.select": {
+            "bg": "magenta",
+            "fg": "bg",
+            "modifiers": [
+              "bold"
+            ]
+          },
+          "markup.list": "gray06",
+          "ui.linenr.selected": {
+            "fg": "fg"
+          },
+          "ui.statusline.insert": {
+            "bg": "blue",
+            "fg": "bg",
+            "modifiers": [
+              "bold"
+            ]
+          },
+          "diff.minus": "red",
+          "ui.virtual": {
+            "fg": "gray02"
+          },
+          "ui.virtual.ruler": {
+            "bg": "gray02"
+          },
+          "ui.virtual.indent-guide": {
+            "fg": "gray02"
+          },
+          "ui.statusline.inactive": {
+            "bg": "gray01",
+            "fg": "fg",
+            "modifiers": [
+              "dim"
+            ]
+          },
+          "ui.selection": {
+            "bg": "gray03"
+          },
+          "ui.help": {
+            "bg": "gray01",
+            "fg": "white"
+          },
+          "ui.menu.scroll": {
+            "bg": "gray01",
+            "fg": "gray04"
+          }
+        }
+      }
+    }
+  ]
+}
