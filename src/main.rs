@@ -2,28 +2,33 @@ use serde_json;
 use std::{fs::File, io::Read};
 use toml;
 
+#[allow(unused)]
 struct ZedTheme {
     name: String,
     author: Author,
     themes: Vec<Theme>,
 }
 
+#[allow(unused)]
 struct Author {
     name: String,
     github_username: Option<String>,
 }
 
+#[allow(unused)]
 enum Appearance {
     Light,
     Dark,
 }
 
+#[allow(unused)]
 struct Theme {
     name: String,
     appearance: Appearance,
     style: Style,
 }
 
+#[allow(unused)]
 struct Style {
     background: Option<String>,
     border: Option<String>,
@@ -158,18 +163,21 @@ struct Style {
     warning_border: Option<String>,
 }
 
+#[allow(unused)]
 struct Player {
     background: String,
     cursor: String,
     selection: String,
 }
 
+#[allow(unused)]
 enum FontStyle {
     Normal,
     Italic,
     Oblique,
 }
 
+#[allow(unused)]
 enum FontWeight {
     A = 100,
     B = 200,
@@ -182,6 +190,7 @@ enum FontWeight {
     I = 900,
 }
 
+#[allow(unused)]
 struct SyntaxObject {
     color: Option<String>,
     font_style: Option<FontStyle>,
@@ -279,9 +288,9 @@ fn main() {
         .parse::<toml::Table>()
         .expect("couldn't parse to toml");
 
-    let tm = toml::map::Map::from(toml);
+    let _tm = toml::map::Map::from(toml);
 
-    let js: serde_json::Value = serde_json::from_reader(json_handler).unwrap();
+    let _js: serde_json::Value = serde_json::from_reader(json_handler).unwrap();
 
     let a = toml::Value::String("e".to_string());
     let b = serde_json::Value::String("e".to_string());
@@ -290,7 +299,7 @@ fn main() {
         println!("yes");
     }
 
-    let last = serde_json::json!({
+    let _last = serde_json::json!({
         "name": "Placeholder",
         "author": "Placeholder",
         "themes": [
