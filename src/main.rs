@@ -2,280 +2,6 @@ use serde_json;
 use std::{fs::File, io::Read};
 use toml;
 
-#[allow(unused)]
-struct ZedTheme {
-    name: String,
-    author: Author,
-    themes: Vec<Theme>,
-}
-
-#[allow(unused)]
-struct Author {
-    name: String,
-    github_username: Option<String>,
-}
-
-#[allow(unused)]
-enum Appearance {
-    Light,
-    Dark,
-}
-
-#[allow(unused)]
-struct Theme {
-    name: String,
-    appearance: Appearance,
-    style: Style,
-}
-
-#[allow(unused)]
-struct Style {
-    background: Option<String>,
-    border: Option<String>,
-    border_disabled: Option<String>,
-    border_focused: Option<String>,
-    border_selected: Option<String>,
-    border_transparent: Option<String>,
-    border_variant: Option<String>,
-    conflict: Option<String>,
-    conflict_background: Option<String>,
-    conflict_border: Option<String>,
-    created: Option<String>,
-    created_background: Option<String>,
-    created_border: Option<String>,
-    deleted: Option<String>,
-    deleted_background: Option<String>,
-    deleted_border: Option<String>,
-    drop_target_background: Option<String>,
-    editor_active_line_background: Option<String>,
-    editor_active_line_number: Option<String>,
-    editor_active_wrap_guide: Option<String>,
-    editor_background: Option<String>,
-    editor_document_highlight_read_background: Option<String>,
-    editor_document_highlight_write_background: Option<String>,
-    editor_foreground: Option<String>,
-    editor_gutter_background: Option<String>,
-    editor_highlighted_line_background: Option<String>,
-    editor_invisible: Option<String>,
-    editor_line_number: Option<String>,
-    editor_subheader_background: Option<String>,
-    editor_wrap_guide: Option<String>,
-    element_active: Option<String>,
-    element_background: Option<String>,
-    element_disabled: Option<String>,
-    element_hover: Option<String>,
-    element_selected: Option<String>,
-    elevated_surface_background: Option<String>,
-    error: Option<String>,
-    error_background: Option<String>,
-    error_border: Option<String>,
-    ghost_element_active: Option<String>,
-    ghost_element_background: Option<String>,
-    ghost_element_disabled: Option<String>,
-    ghost_element_hover: Option<String>,
-    ghost_element_selected: Option<String>,
-    hidden: Option<String>,
-    hidden_background: Option<String>,
-    hidden_border: Option<String>,
-    hint: Option<String>,
-    hint_background: Option<String>,
-    hint_border: Option<String>,
-    icon: Option<String>,
-    icon_accent: Option<String>,
-    icon_disabled: Option<String>,
-    icon_muted: Option<String>,
-    icon_placeholder: Option<String>,
-    ignored: Option<String>,
-    ignored_background: Option<String>,
-    ignored_border: Option<String>,
-    info: Option<String>,
-    info_background: Option<String>,
-    info_border: Option<String>,
-    link_text_hover: Option<String>,
-    modified: Option<String>,
-    modified_background: Option<String>,
-    modified_border: Option<String>,
-    pane_focused_border: Option<String>,
-    panel_background: Option<String>,
-    panel_focused_border: Option<String>,
-    players: Option<Vec<Player>>,
-    predictive: Option<String>,
-    predictive_background: Option<String>,
-    predictive_border: Option<String>,
-    renamed: Option<String>,
-    renamed_background: Option<String>,
-    renamed_border: Option<String>,
-    scrollbar_thumb_border: Option<String>,
-    scrollbar_thumb_hover_background: Option<String>,
-    scrollbar_track_background: Option<String>,
-    scrollbar_track_border: Option<String>,
-    scrollbar_thumb_background: Option<String>,
-    search_match_background: Option<String>,
-    status_bar_background: Option<String>,
-    success: Option<String>,
-    success_background: Option<String>,
-    success_border: Option<String>,
-    surface_background: Option<String>,
-    syntax: Option<Vec<SyntaxObject>>,
-    tab_active_background: Option<String>,
-    tab_inactive_background: Option<String>,
-    tab_bar_background: Option<String>,
-    terminal_ansi_black: Option<String>,
-    terminal_ansi_blue: Option<String>,
-    terminal_ansi_bright_black: Option<String>,
-    terminal_ansi_bright_blue: Option<String>,
-    terminal_ansi_bright_cyan: Option<String>,
-    terminal_ansi_bright_green: Option<String>,
-    terminal_ansi_bright_magenta: Option<String>,
-    terminal_ansi_bright_red: Option<String>,
-    terminal_ansi_bright_white: Option<String>,
-    terminal_ansi_bright_yellow: Option<String>,
-    terminal_ansi_cyan: Option<String>,
-    terminal_ansi_dim_black: Option<String>,
-    terminal_ansi_dim_blue: Option<String>,
-    terminal_ansi_dim_cyan: Option<String>,
-    terminal_ansi_dim_green: Option<String>,
-    terminal_ansi_dim_magenta: Option<String>,
-    terminal_ansi_dim_red: Option<String>,
-    terminal_ansi_dim_white: Option<String>,
-    terminal_ansi_dim_yellow: Option<String>,
-    terminal_ansi_green: Option<String>,
-    terminal_ansi_magenta: Option<String>,
-    terminal_ansi_red: Option<String>,
-    terminal_ansi_white: Option<String>,
-    terminal_ansi_yellow: Option<String>,
-    terminal_background: Option<String>,
-    terminal_bright_foreground: Option<String>,
-    terminal_dim_foreground: Option<String>,
-    terminal_foreground: Option<String>,
-    text: Option<String>,
-    text_accent: Option<String>,
-    text_disabled: Option<String>,
-    text_muted: Option<String>,
-    text_placeholder: Option<String>,
-    title_bar_background: Option<String>,
-    toolbar_background: Option<String>,
-    unreachable: Option<String>,
-    unreachable_background: Option<String>,
-    unreachable_border: Option<String>,
-    warning: Option<String>,
-    warning_background: Option<String>,
-    warning_border: Option<String>,
-}
-
-#[allow(unused)]
-struct Player {
-    background: String,
-    cursor: String,
-    selection: String,
-}
-
-#[allow(unused)]
-enum FontStyle {
-    Normal,
-    Italic,
-    Oblique,
-}
-
-#[allow(unused)]
-enum FontWeight {
-    A = 100,
-    B = 200,
-    C = 300,
-    D = 400,
-    E = 500,
-    F = 600,
-    G = 700,
-    H = 800,
-    I = 900,
-}
-
-#[allow(unused)]
-struct SyntaxObject {
-    color: Option<String>,
-    font_style: Option<FontStyle>,
-    font_weight: Option<FontWeight>,
-}
-
-// struct HxTheme {
-// attribute: Option<String>,
-// comment: Option<String>,
-// constant: Option<String>,
-// constant_numeric: Option<String>,
-// constant_builtin: Option<String>,
-// constant_builtin_boolean: Option<String>,
-// constant_character_escape: Option<String>,
-// constructor: Option<String>,
-// function: Option<String>,
-// function_builtin: Option<String>,
-// function_method: Option<String>,
-// function_macro: Option<String>,
-// keyword: Option<String>,
-// label: Option<String>,
-// namespace: Option<String>,
-// operator: Option<String>,
-// puncuation: Option<String>,
-// special: Option<String>,
-// string: Option<String>,
-// type: Option<String>,
-// variable_builtin: Option<String>,
-// variable_parameter: Option<String>,
-// variable_other_member: Option<String>,
-// markup_heading: Option<String>,
-// markup_raw_inline: Option<String>,
-// markup_bold: Option<String>,
-// markup_italic: Option<String>,
-// markup_strikethrough: Option<String>,
-// markup_list: Option<String>,
-// markup_quote: Option<String>,
-// markup_link_url: Option<String>,
-// markup_link_text: Option<String>,
-// diff_plus: Option<String>,
-// diff_delta: Option<String>,
-// diff_minus: Option<String>,
-// diagnostic_info: Option<String>,
-// diagnostic_hint: Option<String>,
-// diagnostic_warning: Option<String>,
-// diagnostic_error: Option<String>,
-// info: Option<String>,
-// hint: Option<String>,
-// warning: Option<String>,
-// error: Option<String>,
-// ui_background: Option<String>,
-// ui_gutter: Option<String>,
-// ui_virtual: Option<String>,
-// ui_virtual_indent_guide: Option<String>,
-// ui_virtual_whitespace: Option<String>,
-// ui_virtual_ruler: Option<String>,
-// ui_virtual_inlay_hint: Option<String>,
-// ui_cursor: Option<String>,
-// ui_cursor_primary: Option<String>,
-// ui_cursor_match: Option<String>,
-// ui_cursor_insert: Option<String>,
-// ui_selection: Option<String>,
-// ui_selection_primary: Option<String>,
-// ui_cursorline_primary: Option<String>,
-// ui_highlight: Option<String>,
-// ui_highlight_frameline: Option<String>,
-// ui_linenr: Option<String>,
-// ui_linenr_selected: Option<String>,
-// ui_statusline: Option<String>,
-// ui_statusline_inactive: Option<String>,
-// ui_statusline_normal: Option<String>,
-// ui_statusline_insert: Option<String>,
-// ui_statusline_select: Option<String>,
-// ui_text: Option<String>,
-// ui_text_focus: Option<String>,
-// ui_help: Option<String>,
-// ui_popup: Option<String>,
-// ui_window: Option<String>,
-// ui_menu: Option<String>,
-// ui_menu_selected: Option<String>,
-// ui_menu_scroll: Option<String>,
-// ui_debug: Option<String>
-
-// }
-
 fn main() {
     let mut toml_handler = File::open("zed_onedark.toml").expect("unable to open toml file");
     let json_handler = File::open("zed_onedark.json").expect("Unable to create json file");
@@ -288,26 +14,169 @@ fn main() {
         .parse::<toml::Table>()
         .expect("couldn't parse to toml");
 
-    let _tm = toml::map::Map::from(toml);
+    let tm = toml::map::Map::from(toml);
 
-    let _js: serde_json::Value = serde_json::from_reader(json_handler).unwrap();
+    let _colors = tm["palette"].as_table().unwrap().clone();
 
-    let a = toml::Value::String("e".to_string());
-    let b = serde_json::Value::String("e".to_string());
+    let js: serde_json::Value = serde_json::from_reader(json_handler).unwrap();
+    let style = js.as_object().unwrap()["themes"].as_array().unwrap()[0]
+        .as_object()
+        .unwrap()["style"]
+        .as_object()
+        .unwrap();
 
-    if a.as_str() == b.as_str() {
-        println!("yes");
-    }
+    let new_style: serde_json::Map<String, serde_json::Value> = style
+        .keys()
+        .map(|key| {
+            let value = match key.as_str() {
+                "background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "border" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "border.disabled" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "border.focused" => tm["ui.selection.primary"]["bg"].as_str().unwrap(),
+                "border.selected" => tm["ui.selection.primary"]["bg"].as_str().unwrap(),
+                "border.transparent" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "border.variant" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "conflict" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "conflict.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "conflict.border" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "created" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "created.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "created.border" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "deleted" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "deleted.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "deleted.border" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "drop_target.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "editor.active_line.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "editor.active_line_number" => tm["palette"]["ui-text"].as_str().unwrap(),
+                "editor.active_wrap_guide" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "editor.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "editor.document_highlight.read_background" => {
+                    tm["ui.cursor.primary"]["fg"].as_str().unwrap()
+                }
+                "editor.document_highlight.write_background" => {
+                    tm["ui.cursor.primary"]["fg"].as_str().unwrap()
+                }
+                "editor.foreground" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "editor.gutter.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "editor.highlighted_line.background" => {
+                    tm["ui.cursor.primary"]["fg"].as_str().unwrap()
+                }
+                "editor.invisible" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "editor.line_number" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "editor.subheader.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "editor.wrap_guide" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "element.active" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "element.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "element.disabled" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "element.hover" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "element.selected" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "elevated_surface.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "error" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "error.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "error.border" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "ghost_element.active" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "ghost_element.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "ghost_element.disabled" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "ghost_element.hover" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "ghost_element.selected" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "hidden" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "hidden.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "hidden.border" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "hint" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "hint.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "hint.border" => tm["ui.selection.primary"]["bg"].as_str().unwrap(),
+                "icon" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "icon.accent" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "icon.disabled" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "icon.muted" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "icon.placeholder" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "ignored" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "ignored.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "ignored.border" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "info" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "info.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "info.border" => tm["ui.selection.primary"]["bg"].as_str().unwrap(),
+                "link_text.hover" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "modified" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "modified.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "modified.border" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "pane.focused_border" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "panel.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "panel.focused_border" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "players" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "predictive" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "predictive.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "predictive.border" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "renamed" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "renamed.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "renamed.border" => tm["ui.selection.primary"]["bg"].as_str().unwrap(),
+                "scrollbar.thumb.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "scrollbar.thumb.border" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "scrollbar.thumb.hover_background" => {
+                    tm["ui.cursor.primary"]["fg"].as_str().unwrap()
+                }
+                "scrollbar.track.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "scrollbar.track.border" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "search.match_background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "status_bar.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "success" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "success.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "success.border" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "surface.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "syntax" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "tab.active_background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "tab.inactive_background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "tab_bar.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.black" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.blue" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.bright_black" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.bright_blue" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.bright_cyan" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.bright_green" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.bright_magenta" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.bright_red" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.bright_white" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.bright_yellow" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.cyan" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.dim_black" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.dim_blue" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.dim_cyan" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.dim_green" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.dim_magenta" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.dim_red" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.dim_white" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.dim_yellow" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.green" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.magenta" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.red" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.white" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.ansi.yellow" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.bright_foreground" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.dim_foreground" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "terminal.foreground" => tm["ui.text"]["fg"].as_str().unwrap(),
+                "text" => tm["palette"]["ui-text"].as_str().unwrap(),
+                "text.accent" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "text.disabled" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "text.muted" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "text.placeholder" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "title_bar.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "toolbar.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "unreachable" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "unreachable.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "unreachable.border" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "warning" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "warning.background" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                "warning.border" => tm["ui.cursor.primary"]["fg"].as_str().unwrap(),
+                _ => "",
+            };
+            (
+                key.to_string(),
+                serde_json::to_value(value).expect("couldnt convert"),
+            )
+        })
+        .collect();
 
-    let _last = serde_json::json!({
-        "name": "Placeholder",
-        "author": "Placeholder",
-        "themes": [
-        {
-            "name": "Placeholder in themes",
-            "appearance": "Placeholder",
-            "style": "Placeholder Set",
-        },
-        ]
-    });
+    println!("{:#?}", style);
+    println!("{:#?}", new_style);
 }
